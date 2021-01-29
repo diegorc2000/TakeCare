@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TakeCare</string>
+    <string name="btn_inis_s">Iniciar Sesion</string>
+    <string name="et_nombre">Introduce tu Nombre</string>
+    <string name="et_password">Introduce el password</string>
+    <string name="tv_text">Iniciar Sesion en \nTakeCare</string>
+    <string name="tv_reg">Resitrate en TakeCare</string>
+    <string name="tv_f_pas">¿Olvidaste tu contraseña?</string>
 </resources>
