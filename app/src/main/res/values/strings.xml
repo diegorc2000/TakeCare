@@ -6,4 +6,12 @@
     <string name="tv_text">Iniciar Sesion en \nTakeCare</string>
     <string name="tv_reg">Resitrate en TakeCare</string>
     <string name="tv_f_pas">¿Olvidaste tu contraseña?</string>
+    <string name="msg_no_data">Usuario no Registrado</string>
+    <string name="tv_text2">Crea tu Cuenta</string>
+    <string name="btn_c_cuenta">Crear Cuenta</string>
+    <string name="et_cor_elec">Correo Electronico</string>
+    <string name="et_num_tel">Número de telefono</string>
+    <string name="et_com_password">Contraseña</string>
+    <string name="et_f_password">Contraseña</string>
+    <string name="et_nom">Nombre de Usuario</string>
 </resources>

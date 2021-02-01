@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bordes_redondos_r"
+    tools:context=".SingIn">
+
+    <ImageView
+        android:id="@+id/logoLogin"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logorojo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingTop="16dp"
+        android:text="@string/tv_text2"
+        android:textColor="@color/secondaryColor"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoLogin">
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/llLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvText2">
+
+        <EditText
+            android:id="@+id/etNom"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="@string/et_nom"
+            android:textColor="@color/primaryColor"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/bordes_redonods_blancos">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etCorElec"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="@string/et_cor_elec"
+            android:textColor="@color/primaryColor"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/bordes_redonods_blancos">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etNumTel"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="@string/et_num_tel"
+            android:inputType="phone"
+            android:background="@drawable/bordes_redonods_blancos">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etFPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="@string/et_f_password"
+            android:inputType="textPassword"
+            android:background="@drawable/bordes_redonods_blancos">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/etComPassword"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:hint="@string/et_com_password"
+            android:inputType="textPassword"
+            android:background="@drawable/bordes_redonods_blancos">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnInicS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bordes_redonods_blancos"
+        android:onClick="newCuenta"
+        android:text="@string/btn_c_cuenta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llLogin"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="20dp">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
