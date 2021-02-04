@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "852741597347",
+    "project_id": "takecare-ca972",
+    "storage_bucket": "takecare-ca972.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852741597347:android:fa76fff697350b4371f716",
+        "android_client_info": {
+          "package_name": "com.diealbalb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852741597347-raglk51gq47q8obc1u8pf0f8fs12j12b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD51ATf60NipxRcBkcW1zovGUBvEBVDpkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852741597347-raglk51gq47q8obc1u8pf0f8fs12j12b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

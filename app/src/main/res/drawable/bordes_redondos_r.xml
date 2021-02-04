@@ -10,7 +10,7 @@
 
     <!-- Color y ancho del borde del elemento -->
     <stroke
-        android:width="5dp"
+        android:width="10dp"
         android:color="@color/secondaryColor" >
     </stroke>
 

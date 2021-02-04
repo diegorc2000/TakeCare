@@ -1,5 +1,6 @@
 package com.diealbalb;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,10 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Login extends AppCompatActivity {
 
+    private FirebaseAuth fba;
+    private FirebaseUser user;
+
     TextView tvText;
-    EditText etNombre;
+    EditText etMail;
     EditText etPassword;;
     Button btnIniciar;
 
@@ -23,29 +33,55 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.login);
 
         tvText = findViewById(R.id.tvText);
-        etNombre = findViewById(R.id.etNombre);
+        etMail = findViewById(R.id.etMail);
         etPassword = findViewById(R.id.etPassword);
         btnIniciar = findViewById(R.id.btnInicS);
-    }
 
-    public void inicio(View view) {
-        String nombre = etNombre.getText().toString();
-        String contraseña = etPassword.getText().toString();
+        fba = FirebaseAuth.getInstance();
+        user = fba.getCurrentUser();
 
-        if (nombre.isEmpty() || contraseña.isEmpty()){
-            Toast.makeText(this, R.string.msg_no_data, Toast.LENGTH_LONG).show();
-        }else {
-            Intent i = new Intent(this, MainActivity.class);
+        if(user != null){
+            etMail.setText(user.getEmail());
 
-            String dato = etNombre.getText().toString();
-            i.putExtra("NOMBRE", dato);
-
-            startActivity(i);
         }
     }
 
-    public void recordar(View view) {
+    public void inicio(View view) {
+        String email = etMail.getText().toString();
+        String contraseña = etPassword.getText().toString();
+
+        if (email.isEmpty() || contraseña.isEmpty()){
+            Toast.makeText(this, R.string.msg_no_data, Toast.LENGTH_LONG).show();
+        }else {
+            fba.signInWithEmailAndPassword(email, contraseña).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+                        user = fba.getCurrentUser();
+                        accederApp();
+                        finish();
+                    }else {
+                        Toast.makeText(Login.this, getString(R.string.msj_no_accede) + "\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            /*Intent i = new Intent(this, MainActivity.class);
+
+            String dato = etMail.getText().toString();
+            i.putExtra("MAIL", dato);
+
+            startActivity(i);*/
+        }
+    }
+
+    private void accederApp() {
         Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void recordar(View view) {
+        Intent i = new Intent(this, ResetPassword.class);
 
         startActivity(i);
     }
