@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
         tvInicio.setText(String.format(getString(R.string.tv_inicio), user.getEmail()));
     }
 
-    //PARA EL MENU onCreateOptionsMenu y onOptionsItemSelected
-
+    //PARA EL MENU onCreateOptionsMenu y onOptionsItemSelected Para el boton desconectar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
