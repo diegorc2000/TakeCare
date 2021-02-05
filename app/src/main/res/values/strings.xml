@@ -24,10 +24,16 @@
     <string name="et_mail">Introduce tu mail</string>
     <string name="itm_desconectar">Desconectar</string>
     <string name="tv_r_pas">Resetear password</string>
-    <string name="btn_reset">Restablecer contraseña</string>
+    <string name="btn_reset">Restablecer</string>
     <string name="btn_cancelar_a2">Cancelar</string>
     <string name="toast_a2_faltan_datos">Debe introducir todos los datos</string>
     <string name="i_mail">Debes de ingresar el mail</string>
     <string name="no_correo_restablecido">No se ha enviado el correo de restablecer contraseña</string>
     <string name="correo_enviado">Se ha enviado un correo para restablecer tu contraseña</string>
+    <string name="itm_calendar">Calendario</string>
+    <string name="itm_mensajes">mensajes</string>
+    <string name="itm_ajustes">Ajustes</string>
+    <string name="itm_perfil">Perfil</string>
+    <string name="itm_mensage">mensaje</string>
+    <string name="itm_setting">setting</string>
 </resources>
