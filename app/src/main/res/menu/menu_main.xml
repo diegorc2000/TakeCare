@@ -1,31 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!--
-       <item
-           android:id="@+id/itmCalendar"
-           android:title="@string/itm_calendar"
-           android:icon="@drawable/ic_calendar"
-           app:showAsAction="ifRoom"/>
-
-       <item
-           android:id="@+id/itmMensage"
-           android:title="@string/itm_mensage"
-           android:icon="@drawable/ic_mensaje"
-           app:showAsAction="ifRoom"/>
-
-       <item
-           android:id="@+id/itmSetting"
-           android:title="@string/itm_setting"
-           android:icon="@drawable/ic_setting"
-           app:showAsAction="ifRoom"/>
-
-       <item
-           android:id="@+id/itmPerfil"
-           android:title="@string/itm_perfil"
-           android:icon="@drawable/ic_perfil"
-           app:showAsAction="ifRoom"/>
-           -->
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/Calendar"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/calendar"/>
+    <item
+        android:id="@+id/Comment"
+        android:enabled="true"
+        android:icon="@drawable/ic_comment"
+        android:title="@string/comment"/>
+    <item
+        android:id="@+id/Lupa"
+        android:enabled="true"
+        android:icon="@drawable/ic_loupe"
+        android:title="@string/lupa"/>
+    <item
+        android:id="@+id/Settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings"/>
 </menu>

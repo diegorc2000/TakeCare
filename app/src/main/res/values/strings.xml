@@ -36,4 +36,9 @@
     <string name="itm_perfil">Perfil</string>
     <string name="itm_mensage">mensaje</string>
     <string name="itm_setting">setting</string>
+    <string name="calendar">Calendario</string>
+    <string name="comment">Comentarios</string>
+    <string name="lupa">Busqueda</string>
+    <string name="settings">Ajustes</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

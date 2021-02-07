@@ -2,26 +2,35 @@ package com.diealbalb;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth fba;
     private FirebaseUser user;
     TextView tvInicio;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,50 +43,6 @@ public class MainActivity extends AppCompatActivity {
         tvInicio = findViewById(R.id.tvInicio);
         tvInicio.setText(String.format(getString(R.string.tv_inicio), user.getEmail()));
 
-  /*      //APPBAR
-        // cast al xml
-        BottomAppBar bottomAppBar = findViewById(R.id.bottom_app_bar);
-
-        //click event en el  FAB
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "FAB Clicked.", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //click event en el Hamburguer menu
-        bottomAppBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Menu clicked!", Toast.LENGTH_SHORT).show();
-//                sheetBehavior = BottomSheetBehavior.from(sheet);
-            }
-
-
-        });
-
-        //click event en el Bottom bar menu item
-        bottomAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.itmCalendar:
-                        Toast.makeText(MainActivity.this, "Calendar clicked.", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.itmMensage:
-                        Toast.makeText(MainActivity.this, "Mensage clicked.", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.itmSetting:
-                        Toast.makeText(MainActivity.this, "Setting clicked.", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.itmPerfil:
-                        Toast.makeText(MainActivity.this, "Perfil clicked.", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                return false;
-            }
-        });*/
     }
 
 
@@ -98,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }
