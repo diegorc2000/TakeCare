@@ -30,4 +30,14 @@
     <string name="i_mail">Debes de ingresar el mail</string>
     <string name="no_correo_restablecido">No se ha enviado el correo de restablecer contraseña</string>
     <string name="correo_enviado">Se ha enviado un correo para restablecer tu contraseña</string>
+    <string name="home">Inicio</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="mensajes">Mensajes</string>
+    <string name="inicio">Inicio</string>
+    <string name="itm_home">Home</string>
+    <string name="itm_sms">SMS</string>
+    <string name="itm_publicacion">Publicar</string>
+    <string name="Home">Home</string>
+    <string name="publicidad">Publicidad</string>
+    <string name="sms">Sms</string>
 </resources>

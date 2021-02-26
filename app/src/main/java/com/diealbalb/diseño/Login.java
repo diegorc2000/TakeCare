@@ -1,4 +1,4 @@
-package com.diealbalb;
+package com.diealbalb.diseño;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diealbalb.MainActivity;
+import com.diealbalb.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,7 +26,7 @@ public class Login extends AppCompatActivity {
 
     TextView tvText;
     EditText etMail;
-    EditText etPassword;;
+    EditText etPassword;
     Button btnIniciar;
 
     @Override
@@ -65,12 +67,7 @@ public class Login extends AppCompatActivity {
                     }
                 }
             });
-            /*Intent i = new Intent(this, MainActivity.class);
 
-            String dato = etMail.getText().toString();
-            i.putExtra("MAIL", dato);
-
-            startActivity(i);*/
         }
     }
 

@@ -1,6 +1,4 @@
-package com.diealbalb;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.diealbalb.diseño;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +7,8 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.diealbalb.R;
 
 public class Splash extends Activity {
 

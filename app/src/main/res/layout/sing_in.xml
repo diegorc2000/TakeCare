@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
-    tools:context=".SingIn">
+    tools:context=".diseño.SingIn">
 
     <ImageView
         android:id="@+id/logoLogin"
@@ -18,95 +18,116 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="50dp"
-        android:paddingTop="16dp"
-        android:text="@string/tv_text2"
-        android:textColor="@color/secondaryColor"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoLogin">
-
-    </TextView>
-
     <LinearLayout
         android:id="@+id/llLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvText2">
+        app:layout_constraintTop_toBottomOf="@+id/logoLogin">
 
-        <EditText
-            android:id="@+id/etNom"
-            android:layout_width="300dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNom"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bordes_redonods_blancos"
-            android:hint="@string/et_nom"
-            android:inputType="text"
-            android:textColor="@color/secondaryDarkColor">
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/et_nom" />
 
-        <EditText
-            android:id="@+id/etCorElec"
-            android:layout_width="300dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCorElec"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bordes_redonods_blancos"
-            android:hint="@string/et_cor_elec"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/secondaryDarkColor">
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCorElec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/et_cor_elec" />
 
-        <EditText
-            android:id="@+id/etNumTel"
-            android:layout_width="300dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNumTel"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bordes_redonods_blancos"
-            android:hint="@string/et_num_tel"
-            android:inputType="phone"
-            android:textColor="@color/secondaryDarkColor">
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNumTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="@string/et_num_tel" />
 
-        <EditText
-            android:id="@+id/etFPassword"
-            android:layout_width="300dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilFPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bordes_redonods_blancos"
-            android:hint="@string/et_f_password"
-            android:inputType="textPassword"
-            android:textColor="@color/secondaryDarkColor">
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etFPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/et_f_password" />
 
-        <EditText
-            android:id="@+id/etComPassword"
-            android:layout_width="300dp"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilComPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bordes_redonods_blancos"
-            android:hint="@string/et_com_password"
-            android:inputType="textPassword"
-            android:textColor="@color/secondaryDarkColor">
+            android:background="@color/secondaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
 
-        </EditText>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etComPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/et_com_password" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
     </LinearLayout>
 

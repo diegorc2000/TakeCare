@@ -1,4 +1,4 @@
-package com.diealbalb;
+package com.diealbalb.diseño;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.diealbalb.MainActivity;
+import com.diealbalb.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -46,6 +48,7 @@ public class SingIn extends AppCompatActivity {
             etCorElec.setText(user.getEmail());
         }
 
+        etCorElec.setText("");
     }
 
     public void newCuenta(View view) {

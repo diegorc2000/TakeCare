@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/itmHome"
+        android:icon="@drawable/ic_inicio"
+        android:title="@string/itm_home"
+        android:iconTint="@color/secondaryColor"
+        app:showAsAction="ifRoom"/>
+
+    <item
+       android:id="@+id/itmPublicacion"
+        android:icon="@drawable/ic_add"
+        android:iconTint="@color/secondaryColor"
+        android:title="@string/itm_publicacion"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/itmSMS"
+        android:icon="@drawable/ic_sms"
+        android:title="@string/itm_sms"
+        android:iconTint="@color/secondaryColor"
+        app:showAsAction="ifRoom"/>
+</menu>
