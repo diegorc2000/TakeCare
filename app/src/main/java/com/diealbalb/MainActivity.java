@@ -48,17 +48,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.itmHome:
                         item.setChecked(true);
                         Toast.makeText(MainActivity.this, "Likes clicked.", Toast.LENGTH_SHORT).show();
-                        item.setEnabled(true);
                         break;
                     case R.id.itmPublicacion:
                         item.setChecked(true);
                         Toast.makeText(MainActivity.this, "Add clicked.", Toast.LENGTH_SHORT).show();
-                        item.setEnabled(true);
                         break;
                     case R.id.itmSMS:
                         item.setChecked(true);
                         Toast.makeText(MainActivity.this, "Add clicked.", Toast.LENGTH_SHORT).show();
-                        item.setEnabled(true);
                         break;
                 }
                 return false;
