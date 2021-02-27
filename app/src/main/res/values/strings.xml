@@ -40,4 +40,8 @@
     <string name="Home">Home</string>
     <string name="publicidad">Publicidad</string>
     <string name="sms">Sms</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_fragment">No se encuentra ningun fragmento</string>
+    <string name="tv_nombre">GRUPO TAKE CARE</string>
 </resources>

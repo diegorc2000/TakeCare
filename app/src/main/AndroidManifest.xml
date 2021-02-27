@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_logorojo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".diseño.ResetPassword"
+        <activity android:name=".mensaje.MensajesActivity"></activity>
+        <activity
+            android:name=".diseño.ResetPassword"
             android:theme="@style/NoActionThem" />
-
-        <activity android:name=".diseño.SingIn"
-            android:theme="@style/NoActionThem"/>
-
+        <activity
+            android:name=".diseño.SingIn"
+            android:theme="@style/NoActionThem" />
         <activity android:name=".diseño.Login" />
-
         <activity android:name=".diseño.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"
-            android:theme="@style/NoActionThem"/>
-
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionThem" />
     </application>
 
 </manifest>
