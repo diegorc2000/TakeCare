@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_logorojo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mensaje.MensajesActivity"></activity>
+        <activity android:name=".publicaciones.PublicacionesMain"></activity>
+        <activity android:name=".mensaje.MensajesActivity" />
         <activity
             android:name=".diseño.ResetPassword"
             android:theme="@style/NoActionThem" />
