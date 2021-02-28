@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_logorojo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".publicaciones.PublicacionesMain"></activity>
-        <activity android:name=".mensaje.MensajesActivity" />
+        <activity
+            android:name=".mensaje.MensajesActivity"
+            android:theme="@style/NoActionThem" />
         <activity
             android:name=".diseño.ResetPassword"
             android:theme="@style/NoActionThem" />
@@ -28,6 +29,8 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/NoActionThem" />
+        <activity android:name=".publicaciones.AnunciosMain"/>
+        <activity android:name=".publicaciones.ImgActivity"/>
     </application>
 
 </manifest>

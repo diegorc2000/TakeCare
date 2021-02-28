@@ -73,7 +73,7 @@ public class MensajesActivity extends AppCompatActivity {
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.push().setValue(new MensajeEnviar(txtMensajes.getText().toString(),nombre.getText().toString(), fotoPerfilCadena, "1", ServerValue.TIMESTAMP));
+                databaseReference.push().setValue(new MensajeEnviar(txtMensajes.getText().toString(), nombre.getText().toString(), fotoPerfilCadena, "1", ServerValue.TIMESTAMP));
                 txtMensajes.setText("");
             }
         });
@@ -130,19 +130,19 @@ public class MensajesActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled( DatabaseError error) {
+            public void onCancelled(DatabaseError error) {
 
             }
         });
 
     }
 
-    private void setScrollbar(){
-        rvMensajes.scrollToPosition(adapter.getItemCount() -1);
+    private void setScrollbar() {
+        rvMensajes.scrollToPosition(adapter.getItemCount() - 1);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PHOTO_SEND && resultCode == RESULT_OK) {
@@ -153,11 +153,11 @@ public class MensajesActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getUploadSessionUri();
-                    Mensaje m = new MensajeEnviar("Diego te ha enviado una foto", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2",  ServerValue.TIMESTAMP);
+                    Mensaje m = new MensajeEnviar("Diego te ha enviado una foto", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                 }
             });
-        }else if (requestCode == PHOTO_PERFIL && resultCode == RESULT_OK){
+        } else if (requestCode == PHOTO_PERFIL && resultCode == RESULT_OK) {
             Uri u = data.getData();
             storageReference = storage.getReference("foto_perfil"); //imagenes_chat
             final StorageReference fotoReferencia = storageReference.child(u.getLastPathSegment());
@@ -166,7 +166,7 @@ public class MensajesActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getUploadSessionUri();
                     fotoPerfilCadena = u.toString();
-                    Mensaje m = new MensajeEnviar("Diego ha actualizado su foto de perfil", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2",  ServerValue.TIMESTAMP);
+                    Mensaje m = new MensajeEnviar("Diego ha actualizado su foto de perfil", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                     Glide.with(MensajesActivity.this).load(u.toString()).into(fotoPerfil);
                 }

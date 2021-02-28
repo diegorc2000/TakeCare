@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/itmHome"
+        android:id="@+id/itmInicio"
         android:icon="@drawable/ic_inicio"
         android:title="@string/itm_home"
         android:iconTint="@color/secondaryColor"
         app:showAsAction="ifRoom"/>
 
     <item
-       android:id="@+id/itmPublicacion"
+       android:id="@+id/itmPublicar"
         android:icon="@drawable/ic_add"
         android:iconTint="@color/secondaryColor"
         android:title="@string/itm_publicacion"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/itmSMS"
+        android:id="@+id/itmSms"
         android:icon="@drawable/ic_sms"
         android:title="@string/itm_sms"
+        android:iconTint="@color/secondaryColor"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/itmAjustes"
+        android:icon="@drawable/ic_ajustes"
+        android:title="@string/itm_ajustes"
         android:iconTint="@color/secondaryColor"
         app:showAsAction="ifRoom"/>
 </menu>

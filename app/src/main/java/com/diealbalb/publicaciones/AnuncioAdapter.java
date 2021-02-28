@@ -10,63 +10,60 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.diealbalb.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageViewHolder>{
 
+public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageViewHolder> {
     private Context mContext;
-    private List<Anuncio> mPublicacion;
+    private List<Anuncio> mUploads;
     private OnItemClickListener mListener;
 
-    public AnuncioAdapter(Context mContext, List<Anuncio> mPublicacion) {
-        this.mContext = mContext;
-        this.mPublicacion = mPublicacion;
+    public AnuncioAdapter(Context context, List<Anuncio> uploads) {
+        mContext = context;
+        mUploads = uploads;
     }
 
-    @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.imagen_item, parent, false);
+    public ImageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(mContext).inflate(R.layout.image_item, parent, false);
         return new ImageViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-        Anuncio publicacionCorriente = mPublicacion.get(position);
-        holder.tvName.setText(publicacionCorriente.getName());
-        Glide.with(mContext)
-                .load(publicacionCorriente.getImageUrl())
+    public void onBindViewHolder(ImageViewHolder holder, int position) {
+        Anuncio uploadCurrent = mUploads.get(position);
+        holder.textViewDescripcion.setText(uploadCurrent.getName());
+        Picasso.with(mContext)
+                .load(uploadCurrent.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)
+                .fit()
                 .centerCrop()
-                .fitCenter()
                 .into(holder.imageView);
-
     }
 
     @Override
     public int getItemCount() {
-        return mPublicacion.size();
+        return mUploads.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
-        public TextView tvName;
+    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
+        public TextView textViewDescripcion;
         public ImageView imageView;
 
-        public ImageViewHolder(@NonNull View itemView) {
+        public ImageViewHolder(View itemView) {
             super(itemView);
 
-            tvName = itemView.findViewById(R.id.tvNamei);
-            imageView = itemView.findViewById(R.id.ivAnuncio);
+            textViewDescripcion = itemView.findViewById(R.id.text_view_descripcion);
+            imageView = itemView.findViewById(R.id.image_view_upload);
 
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
-
         }
 
         @Override
@@ -81,13 +78,12 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Selecciona una accion");
-            MenuItem doWhatever = menu.add(Menu.NONE, 1, 1, "Haz lo que sea");
-            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Borrar");
+            menu.setHeaderTitle("Select Action");
+            MenuItem doWhatever = menu.add(Menu.NONE, 1, 1, "Do whatever");
+            MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
 
             doWhatever.setOnMenuItemClickListener(this);
             delete.setOnMenuItemClickListener(this);
-
         }
 
         @Override
@@ -95,6 +91,7 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
             if (mListener != null) {
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
+
                     switch (item.getItemId()) {
                         case 1:
                             mListener.onWhatEverClick(position);
@@ -107,6 +104,7 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
             }
             return false;
         }
+
     }
 
     public interface OnItemClickListener {
@@ -115,10 +113,9 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
         void onWhatEverClick(int position);
 
         void onDeleteClick(int position);
-
     }
 
-    public void setOnItemClickListner(OnItemClickListener listner) {
-        mListener = listner;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
     }
 }

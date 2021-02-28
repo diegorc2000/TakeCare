@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    tools:context=".fragmentos.BibliografiaFragmento">
+
+    <TextView
+        android:id="@+id/tvFTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center_horizontal"
+        android:text="Bibliografia"
+        android:textColor="@color/secondaryColor"
+        android:textSize="32sp"
+        android:layout_weight="1"/>
+
+</FrameLayout>

@@ -44,10 +44,16 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_fragment">No se encuentra ningun fragmento</string>
     <string name="tv_nombre">GRUPO TAKE CARE</string>
-    <string name="et_nom_anuncio">Introduce el nombre del anuncio</string>
+    <string name="et_desc_anuncio">Introduce motivo con de detalles de tu Anuncio</string>
     <string name="btn_imagen">Escoge una imagen</string>
     <string name="btn_publicar_anuncio">Publicar</string>
     <string name="tv_anuncios">Anuncios</string>
     <string name="publicando_anuncio">Publicando anuncio</string>
     <string name="no_data">Debes seleccionar una imagen</string>
+    <string name="et_descripcion">Describe tu necesidad</string>
+    <string name="itm_ajustes">Ajustes</string>
+    <string name="tv_frag_titulo">Ajustes</string>
+    <string name="btn_about">Nosotros</string>
+    <string name="btn_bibliografia">Bibliografia</string>
+    <string name="btn_logout">Desconectarse</string>
 </resources>

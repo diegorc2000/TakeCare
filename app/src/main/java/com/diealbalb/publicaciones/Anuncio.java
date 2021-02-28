@@ -3,9 +3,9 @@ package com.diealbalb.publicaciones;
 import com.google.firebase.database.Exclude;
 
 public class Anuncio {
-    private String aName;
-    private String aImageUrl;
-    private String aKey;
+    private String mName;
+    private String mImageUrl;
+    private String mKey;
 
     public Anuncio() {
         //empty constructor needed
@@ -14,35 +14,37 @@ public class Anuncio {
     public Anuncio(String name, String imageUrl) {
         if (name.trim().equals("")) {
             name = "No Name";
+
         }
 
-        aName = name;
-        aImageUrl = imageUrl;
+        mName = name;
+        mImageUrl = imageUrl;
     }
 
     public String getName() {
-        return aName;
+        return mName;
     }
 
     public void setName(String name) {
-        aName = name;
+        mName = name;
     }
 
+
     public String getImageUrl() {
-        return aImageUrl;
+        return mImageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        aImageUrl = imageUrl;
+        mImageUrl = imageUrl;
     }
 
     @Exclude
-    public String getmKey() {
-        return aKey;
+    public String getKey() {
+        return mKey;
     }
 
     @Exclude
-    public void setmKey(String mKey) {
-        this.aKey = mKey;
+    public void setKey(String key) {
+        mKey = key;
     }
 }

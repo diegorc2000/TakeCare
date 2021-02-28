@@ -3,6 +3,7 @@ package com.diealbalb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,11 +17,15 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.diealbalb.diseño.Login;
-import com.diealbalb.fragmentos.InicioFragment;
+import com.diealbalb.fragmentos.AjustesFragmento;
+import com.diealbalb.fragmentos.BibliografiaFragmento;
+import com.diealbalb.fragmentos.NosotrosFragmento;
+import com.diealbalb.listeners.OnControlerFragmentListener;
 import com.diealbalb.mensaje.MensajesActivity;
 import com.diealbalb.publicaciones.Anuncio;
 import com.diealbalb.publicaciones.AnuncioAdapter;
-import com.diealbalb.publicaciones.PublicacionesMain;
+import com.diealbalb.publicaciones.AnunciosMain;
+import com.diealbalb.publicaciones.ImgActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,7 +41,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AnuncioAdapter.OnItemClickListener{
+public class MainActivity extends AppCompatActivity implements OnControlerFragmentListener, AnuncioAdapter.OnItemClickListener {
 
     private FirebaseAuth fba;
     private FirebaseUser user;
@@ -44,7 +49,11 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
     FrameLayout flMain;
     BottomNavigationView bottom;
 
-    //Anuncios
+    //fragmentos
+    AjustesFragmento ajuestesFragment = new AjustesFragmento();
+
+
+    //ANUNCIO
     private RecyclerView mRecyclerView;
     private AnuncioAdapter mAdapter;
 
@@ -54,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListener;
 
-    private List<Anuncio> mPublicaciones;
+    private List<Anuncio> mAnuncio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,72 +75,58 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
 
         flMain = findViewById(R.id.flMain);
 
-        bottom = findViewById(R.id.bottom_navigation);
-        bottom.setOnNavigationItemSelectedListener(navListener);
+        bottom = findViewById(R.id.bnMain);
+        bottom.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
-        //Anuncios
+        //ANUNCIO
         mRecyclerView = findViewById(R.id.rv);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         mProgressCircle = findViewById(R.id.pbCircle);
-
-        mPublicaciones = new ArrayList<>();
-
-        mAdapter = new AnuncioAdapter(MainActivity.this, mPublicaciones);
-
+        mAnuncio = new ArrayList<>();
+        mAdapter = new AnuncioAdapter(MainActivity.this, mAnuncio);
         mRecyclerView.setAdapter(mAdapter);
-
-        mAdapter.setOnItemClickListner(MainActivity.this);
-
+        mAdapter.setOnItemClickListener(MainActivity.this);
         mStorage = FirebaseStorage.getInstance();
-
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Publicaciones");
-
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                mPublicaciones.clear();
-
-                for (DataSnapshot postSnapshot : snapshot.getChildren()){
-                    Anuncio publicacion = postSnapshot.getValue(Anuncio.class);
-
-                    publicacion.setmKey(postSnapshot.getKey());
-
-                    mPublicaciones.add(publicacion);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mAnuncio.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Anuncio upload = postSnapshot.getValue(Anuncio.class);
+                    upload.setKey(postSnapshot.getKey());
+                    mAnuncio.add(upload);
                 }
-
                 mAdapter.notifyDataSetChanged();
-
                 mProgressCircle.setVisibility(View.INVISIBLE);
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
-
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
+    //BOTOM NAVIGATION
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
-                case R.id.itmHome:
-                    selectedFragment = new InicioFragment();
-                    break;
-                case R.id.itmPublicacion:
-                    startActivity(new Intent(MainActivity.this, PublicacionesMain.class));
-                    break;
-                case R.id.itmSMS:
+                case R.id.itmInicio:
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    return true;
+                case R.id.itmPublicar:
+                    startActivity(new Intent(MainActivity.this, AnunciosMain.class));
+                    return true;
+                case R.id.itmSms:
                     startActivity(new Intent(MainActivity.this, MensajesActivity.class));
-                    break;
+                    return true;
+                case R.id.itmAjustes:
+                    loadFragment(ajuestesFragment);
+                    return true;
             }
 
             getSupportFragmentManager()
@@ -139,9 +134,43 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
                     .replace(R.id.flMain, selectedFragment)
                     .addToBackStack(null)
                     .commit();
-            return true;
+            return false;
         }
     };
+
+    @Override
+    public void selectFrgment(String texto) {
+
+        Fragment selectedFragment = null;
+
+        switch (texto) {
+            case "nosotros":
+                selectedFragment = new NosotrosFragmento();
+                break;
+            case "bibliografia":
+                selectedFragment = new BibliografiaFragmento();
+                break;
+            case "desconectarse":
+                fba.signOut();
+                Intent i = new Intent(this, Login.class);
+                startActivity(i);
+                finish();
+                break;
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.flMain, selectedFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    //Fragmentos
+    public void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.flMain, fragment);
+        transaction.commit();
+
+    }
 
     //PARA EL MENU onCreateOptionsMenu y onOptionsItemSelected Para el boton desconectar
     @Override
@@ -152,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itmDesconectar){
+        if (item.getItemId() == R.id.itmDesconectar) {
             fba.signOut();
             Intent i = new Intent(this, Login.class);
             startActivity(i);
@@ -161,36 +190,34 @@ public class MainActivity extends AppCompatActivity implements AnuncioAdapter.On
         return super.onOptionsItemSelected(item);
     }
 
-    //Anuncio
+    //ANUNCIO
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this, "Click normal" + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onWhatEverClick(int position) {
-        Toast.makeText(this, "Click loco" + position, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(this, "Whatever click at position: " + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDeleteClick(int position) {
-        Anuncio selectedItem = mPublicaciones.get(position);
-        final String selectedKey = selectedItem.getmKey();
+        Anuncio selectedItem = mAnuncio.get(position);
+        final String selectedKey = selectedItem.getKey();
 
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageUrl());
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(MainActivity.this, "Item seleccionado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
     }
