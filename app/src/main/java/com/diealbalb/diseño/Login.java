@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
                         accederApp();
                         finish();
                     }else {
-                        Toast.makeText(Login.this, getString(R.string.msj_no_accede) + "\n" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, getString(R.string.msj_no_accede) + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });

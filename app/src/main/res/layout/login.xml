@@ -106,28 +106,45 @@
         app:layout_constraintTop_toBottomOf="@+id/llLogin"
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/tvFPasw"
+        <Button
+            android:id="@+id/btnRContraseña"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="recordar"
-            android:text="@string/tv_f_pas"
-            android:textColor="@color/primaryColor"
             android:layout_marginRight="15dp"
-            android:textSize="12sp">
+            android:onClick="recordar"
+            android:text="@string/btn_r_contraseña"/>
 
-        </TextView>
-
-        <TextView
-            android:id="@+id/tvReg"
+        <Button
+            android:id="@+id/btnRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="registro"
-            android:text="@string/tv_reg"
-            android:textColor="@color/primaryColor"
-            android:textSize="12sp">
+            android:text="@string/btn_registro"/>
 
-        </TextView>
+<!--        <TextView-->
+<!--            android:id="@+id/tvFPasw"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="recordar"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/tv_f_pas"-->
+<!--            android:textColor="@color/primaryColor"-->
+<!--            android:layout_marginRight="15dp"-->
+<!--            android:textSize="24sp">-->
+
+<!--        </TextView>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvReg"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="registro"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="@string/tv_reg"-->
+<!--            android:textColor="@color/primaryColor"-->
+<!--            android:textSize="24sp">-->
+
+<!--        </TextView>-->
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

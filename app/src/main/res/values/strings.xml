@@ -3,17 +3,17 @@
     <string name="btn_inis_s">Iniciar Sesion</string>
     <string name="et_nombre">Introduce tu Nombre</string>
     <string name="et_password">Introduce el password</string>
-    <string name="tv_text">Iniciar Sesion en \nTakeCare</string>
+    <string name="tv_text">Iniciar Sesion en TakeCare</string>
     <string name="tv_reg">Resitrate en TakeCare</string>
     <string name="tv_f_pas">¿Olvidaste tu contraseña?</string>
     <string name="msg_no_data">Introduzca todos los campos</string>
     <string name="tv_text2">Crea tu Cuenta</string>
-    <string name="btn_c_cuenta">Crear Cuenta</string>
+    <string name="btn_c_cuenta">Registrarse</string>
     <string name="et_cor_elec">Correo Electronico *</string>
     <string name="et_num_tel">Número de telefono</string>
     <string name="et_com_password">Contraseña *</string>
     <string name="et_f_password">Contraseña *</string>
-    <string name="et_nom">Nombre de Usuario</string>
+    <string name="et_nom">Nombre de Usuario*</string>
     <string name="msj_no_registrado">No se ha podido registrar un usuario Introduce los campos obligatorios</string>
     <string name="msj_registrado">Se ha registrado un Usuario</string>
     <string name="msj_no_accede">No se ha registrado un usuario</string>
@@ -76,4 +76,6 @@
     <string name="descripcion_diego">Descipcion; Me llamo Diego tengo 20 años y soy programador de aplicaciones, vivo en Madrid y soy una persona muy deportista.</string>
     <string name="descripcion_soriano">Descipcion; Soy Alberto, tengo 25 años y mantengo una relación amor odio con programación, aún así seguimos adelante creando apps para teléfonos movil</string>
     <string name="nombreUsu">TakeCare</string>
+    <string name="btn_r_contraseña">Recordar contraseña</string>
+    <string name="btn_registro">Unirme a TakeCare</string>
 </resources>

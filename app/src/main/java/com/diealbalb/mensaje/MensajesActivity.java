@@ -154,7 +154,7 @@ public class MensajesActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getUploadSessionUri();
-                    Mensaje m = new MensajeEnviar( nombre + "te ha enviado una foto", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
+                    Mensaje m = new MensajeEnviar("Diego te ha enviado una foto", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                 }
             });
@@ -167,7 +167,7 @@ public class MensajesActivity extends AppCompatActivity {
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Uri u = taskSnapshot.getUploadSessionUri();
                     fotoPerfilCadena = u.toString();
-                    Mensaje m = new MensajeEnviar(nombre + " ha actualizado su foto de perfil", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
+                    Mensaje m = new MensajeEnviar("Diego ha actualizado su foto de perfil", u.toString(), nombre.getText().toString(), fotoPerfilCadena, "2", ServerValue.TIMESTAMP);
                     databaseReference.push().setValue(m);
                     Glide.with(MensajesActivity.this).load(u.toString()).into(fotoPerfil);
                 }
