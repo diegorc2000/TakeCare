@@ -17,12 +17,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.diealbalb.MainActivity;
 import com.diealbalb.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -37,7 +44,8 @@ public class AnunciosMain extends AppCompatActivity {
     private Button mButtonChooseImage;
     private Button mButtonUpload;
     private TextView mTextViewShowUploads;
-    private EditText mTVDescripcion;
+    private EditText mETNombre;
+    private EditText mETDescripcion;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
 
@@ -45,6 +53,7 @@ public class AnunciosMain extends AppCompatActivity {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    ValueEventListener vel;
 
     private StorageTask mUploadTask;
 
@@ -56,12 +65,13 @@ public class AnunciosMain extends AppCompatActivity {
         mButtonChooseImage = findViewById(R.id.btnArchivo);
         mButtonUpload = findViewById(R.id.btnPublicar);
         mTextViewShowUploads = findViewById(R.id.tvAnuncion);
-        mTVDescripcion = findViewById(R.id.etDescripcion);
+        mETNombre = findViewById(R.id.etNombre);
+        mETDescripcion = findViewById(R.id.etDescripcion);
         mImageView = findViewById(R.id.ivArchivo);
         mProgressBar = findViewById(R.id.pbLineal);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("Anuncios");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Anuncios");
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads/");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads/");
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,49 +125,73 @@ public class AnunciosMain extends AppCompatActivity {
     }
 
     private void uploadFile() {
-        if (mImageUri != null) {
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+        final String decripcion = mETDescripcion.getText().toString().trim();
+        final String nombre = mETNombre.getText().toString().trim();
 
-            mUploadTask = fileReference.putFile(mImageUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mProgressBar.setProgress(0);
-                                }
-                            }, 500);
+        if (nombre.isEmpty() || decripcion.isEmpty()){
+            Toast.makeText(this, R.string.no_data, Toast.LENGTH_SHORT).show();
+        }else{
+            final StorageReference fotoRef = mStorageRef.child(mImageUri.getEncodedPath());
 
-                            Toast.makeText(AnunciosMain.this, "Anuncio Publicado!!", Toast.LENGTH_LONG).show();
-                            Anuncio upload = new Anuncio(mTVDescripcion.getText().toString().trim(),
-                                    taskSnapshot.getUploadSessionUri().toString()); //getDownloadUrl()
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AnunciosMain.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                            mProgressBar.setProgress((int) progress);
-                        }
-                    });
-        } else {
-            Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
+            UploadTask ut = fotoRef.putFile(mImageUri);
+
+            Task<Uri> urlTask = ut.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task)
+                        throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    return fotoRef.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()){
+                        Uri downloadUri = task.getResult();
+                        Anuncio a = new Anuncio(nombre, decripcion, downloadUri.toString());
+                        mDatabaseRef.child(nombre + " " + decripcion).setValue(a);
+
+                        addDatabaseListener(nombre + " " + decripcion);
+                    }
+                }
+            });
+        }
+
+    }
+
+    private void addDatabaseListener(String clave) {
+        if (vel == null){
+            vel = new ValueEventListener(){
+
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Anuncio a = snapshot.getValue(Anuncio.class);
+                    if (a != null) cargarPerfil(a);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            };
+            mDatabaseRef.child(clave).addValueEventListener(vel);
         }
     }
 
+    private void cargarPerfil(Anuncio a) {
+        mETNombre.setText(a.getmNombre());
+        mETDescripcion.setText(a.getmDescripcion());
+        Glide.with(mImageView.getContext()).load(a.getImageUrl()).into(mImageView);
+
+        mETNombre.setText("");
+        mETDescripcion.setText("");
+        mImageView.setImageResource(0);
+    }
+
     private void openImagesActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class); //MainActivity
         startActivity(intent);
     }
 

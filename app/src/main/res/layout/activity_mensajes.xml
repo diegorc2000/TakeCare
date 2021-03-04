@@ -25,8 +25,8 @@
 
         <ImageView
             android:id="@+id/fotoPerfil"
-            android:layout_width="60sp"
-            android:layout_height="60sp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
             android:src="@drawable/logorojo"
             android:layout_marginLeft="24dp"/>
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/tv_nombre"
-            android:textSize="24sp"
+            android:textSize="32sp"
             android:layout_marginLeft="18dp"/>
 
     </LinearLayout>
@@ -66,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="24sp"
             android:hint="Escribe un mensaje">
 
         </EditText>
@@ -74,6 +75,7 @@
             android:id="@+id/btnenviar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="24sp"
             android:hint="Enviar">
 
         </Button>

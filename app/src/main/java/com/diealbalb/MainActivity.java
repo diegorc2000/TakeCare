@@ -18,14 +18,13 @@ import android.widget.Toast;
 
 import com.diealbalb.diseño.Login;
 import com.diealbalb.fragmentos.AjustesFragmento;
-import com.diealbalb.fragmentos.BibliografiaFragmento;
+import com.diealbalb.fragmentos.PrivacidadSeguridadFragmento;
 import com.diealbalb.fragmentos.NosotrosFragmento;
 import com.diealbalb.listeners.OnControlerFragmentListener;
 import com.diealbalb.mensaje.MensajesActivity;
 import com.diealbalb.publicaciones.Anuncio;
 import com.diealbalb.publicaciones.AnuncioAdapter;
 import com.diealbalb.publicaciones.AnunciosMain;
-import com.diealbalb.publicaciones.ImgActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
 
     //fragmentos
     AjustesFragmento ajuestesFragment = new AjustesFragmento();
-
 
     //ANUNCIO
     private RecyclerView mRecyclerView;
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
         mRecyclerView = findViewById(R.id.rv);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mProgressCircle = findViewById(R.id.pbCircle);
+        //mProgressCircle = findViewById(R.id.pbCircle);
         mAnuncio = new ArrayList<>();
         mAdapter = new AnuncioAdapter(MainActivity.this, mAnuncio);
         mRecyclerView.setAdapter(mAdapter);
@@ -99,12 +97,12 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
                     mAnuncio.add(upload);
                 }
                 mAdapter.notifyDataSetChanged();
-                mProgressCircle.setVisibility(View.INVISIBLE);
+                //mProgressCircle.setVisibility(View.INVISIBLE);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(MainActivity.this, databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                mProgressCircle.setVisibility(View.INVISIBLE);
+                //mProgressCircle.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -120,12 +118,14 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
                     return true;
                 case R.id.itmPublicar:
                     startActivity(new Intent(MainActivity.this, AnunciosMain.class));
+                    mRecyclerView.setVisibility(View.VISIBLE);
                     return true;
                 case R.id.itmSms:
                     startActivity(new Intent(MainActivity.this, MensajesActivity.class));
                     return true;
                 case R.id.itmAjustes:
                     loadFragment(ajuestesFragment);
+                    mRecyclerView.setVisibility(View.INVISIBLE);
                     return true;
             }
 
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
                 selectedFragment = new NosotrosFragmento();
                 break;
             case "bibliografia":
-                selectedFragment = new BibliografiaFragmento();
+                selectedFragment = new PrivacidadSeguridadFragmento();
                 break;
             case "desconectarse":
                 fba.signOut();
@@ -193,12 +193,12 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
     //ANUNCIO
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this, "Normal click at position: " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, R.string.reserva + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onWhatEverClick(int position) {
-        Toast.makeText(this, "Whatever click at position: " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Has reservado, ponte en contacto desde el chat grupal", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -211,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements OnControlerFragme
             @Override
             public void onSuccess(Void aVoid) {
                 mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(MainActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Anuncio eliminar", Toast.LENGTH_LONG).show();
             }
         });
     }

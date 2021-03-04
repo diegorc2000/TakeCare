@@ -9,15 +9,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10sp">
             <ImageView
                 android:id="@+id/fotoPerfilMensaje"
-                android:layout_width="24sp"
-                android:layout_height="24sp"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
                 android:src="@drawable/logorojo">
 
             </ImageView>
@@ -35,13 +36,15 @@
                     android:id="@+id/nombreMensaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:textSize="28sp"
+                    android:text="@string/nombreUsu"
                     android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/horaMensaje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="24sp"
                     android:text="00:00"/>
 
             </LinearLayout>
@@ -50,6 +53,7 @@
                 android:id="@+id/mensajeMensaje"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="28sp"
                 android:text="Hola bienvenido"/>
 
             <ImageView

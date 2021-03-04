@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryColor"
+    android:padding="10dp"
+    tools:context=".fragmentos.PrivacidadSeguridadFragmento">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvFTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center_horizontal"
+                android:text="Privacidad y Seguridad"
+                android:textColor="@color/secondaryColor"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/tvPCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFTitulo"
+                android:layout_marginTop="10dp"
+                android:text="@string/privacidad_cuenta"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textColor="@color/secondaryColor"
+                android:textStyle="bold|italic" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/checkboxPCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPCuenta"
+                android:textSize="24sp"
+                android:text="@string/c_privada"
+                android:textColor="@color/secondaryColor" />
+
+            <TextView
+                android:id="@+id/tvPPrivacidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkboxPCuenta"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_p_privacidad"
+                android:textAllCaps="true"
+                android:textSize="20dp"
+                android:textColor="@color/secondaryColor"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/tvDPPrivacidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPPrivacidad"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_d_p_privacidad"
+                android:textSize="20sp"
+                android:textColor="@color/secondaryColor" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDPPrivacidad"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCGoogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_c_google"
+                    android:textSize="20sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondaryColor"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/tvDCGoogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvCGoogle"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/tv_d_c_google"
+                    android:textSize="20sp"
+                    android:textColor="@color/secondaryColor" />
+            </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

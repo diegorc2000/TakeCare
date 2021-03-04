@@ -4,32 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/flMain"
         android:layout_width="match_parent"
-        android:layout_height="675dp"   />
-
-    <ProgressBar
-        android:id="@+id/pbCircle"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/primaryColor"/>
+        android:layout_height="675dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="675dp" />
+        android:layout_height="630dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnMain"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_gravity="bottom"
         android:background="@color/primaryColor"
         app:menu="@menu/bottom_menu" />
 

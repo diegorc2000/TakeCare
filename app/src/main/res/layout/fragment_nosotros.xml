@@ -8,13 +8,71 @@
 
     <TextView
         android:id="@+id/tvFTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-black"
         android:gravity="center_horizontal"
         android:text="Nosotros"
         android:textColor="@color/secondaryColor"
-        android:textSize="32sp"
-        android:layout_weight="1"/>
+        android:textSize="32sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/foto_diego"
+                    android:layout_gravity="center_horizontal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="@string/descripcion_diego"
+                    android:textColor="@color/secondaryColor"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/foto_soriano"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:text="@string/descripcion_soriano"
+                    android:textColor="@color/secondaryColor"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 </FrameLayout>

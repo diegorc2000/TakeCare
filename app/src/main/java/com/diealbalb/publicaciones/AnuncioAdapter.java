@@ -37,7 +37,8 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
     @Override
     public void onBindViewHolder(ImageViewHolder holder, int position) {
         Anuncio uploadCurrent = mUploads.get(position);
-        holder.textViewDescripcion.setText(uploadCurrent.getName());
+        holder.textViewNombre.setText(uploadCurrent.getmNombre());
+        holder.textViewDescripcion.setText(uploadCurrent.getmDescripcion());
         Picasso.with(mContext)
                 .load(uploadCurrent.getImageUrl())
                 .placeholder(R.mipmap.ic_launcher)
@@ -53,12 +54,14 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
 
     public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
             View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
+        public TextView textViewNombre;
         public TextView textViewDescripcion;
         public ImageView imageView;
 
         public ImageViewHolder(View itemView) {
             super(itemView);
 
+            textViewNombre = itemView.findViewById(R.id.text_view_nombre);
             textViewDescripcion = itemView.findViewById(R.id.text_view_descripcion);
             imageView = itemView.findViewById(R.id.image_view_upload);
 
@@ -78,11 +81,11 @@ public class AnuncioAdapter extends RecyclerView.Adapter<AnuncioAdapter.ImageVie
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.setHeaderTitle("Select Action");
-            MenuItem doWhatever = menu.add(Menu.NONE, 1, 1, "Do whatever");
+            menu.setHeaderTitle("Selecciona una accion");
+            MenuItem reservar = menu.add(Menu.NONE, 1, 1, "Reservar");
             MenuItem delete = menu.add(Menu.NONE, 2, 2, "Delete");
 
-            doWhatever.setOnMenuItemClickListener(this);
+            reservar.setOnMenuItemClickListener(this);
             delete.setOnMenuItemClickListener(this);
         }
 

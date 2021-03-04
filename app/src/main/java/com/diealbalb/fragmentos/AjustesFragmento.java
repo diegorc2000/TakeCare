@@ -41,7 +41,7 @@ public class AjustesFragmento extends Fragment {
         Glide.with(this).load(R.drawable.ic_ajustes).into(imgAjustes);
 
         btnNosotros = (Button) view.findViewById(R.id.btnNosotros);
-        btnBibliografia = (Button) view.findViewById(R.id.btnBibliografia);
+        btnBibliografia = (Button) view.findViewById(R.id.btnPrivacidadSeguridad);
         btnDesconectarse = (Button) view.findViewById(R.id.btnDesconectarse);
 
         btnNosotros.setOnClickListener(new View.OnClickListener() {

@@ -12,10 +12,10 @@ import com.diealbalb.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BibliografiaFragmento#newInstance} factory method to
+ * Use the {@link PrivacidadSeguridadFragmento#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BibliografiaFragmento extends Fragment {
+public class PrivacidadSeguridadFragmento extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class BibliografiaFragmento extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BibliografiaFragmento() {
+    public PrivacidadSeguridadFragmento() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class BibliografiaFragmento extends Fragment {
      * @return A new instance of fragment BibliografiaFragmento.
      */
     // TODO: Rename and change types and number of parameters
-    public static BibliografiaFragmento newInstance(String param1, String param2) {
-        BibliografiaFragmento fragment = new BibliografiaFragmento();
+    public static PrivacidadSeguridadFragmento newInstance(String param1, String param2) {
+        PrivacidadSeguridadFragmento fragment = new PrivacidadSeguridadFragmento();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class BibliografiaFragmento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bibliografia, container, false);
+        return inflater.inflate(R.layout.fragment_privacidad_seguridad, container, false);
     }
 }
