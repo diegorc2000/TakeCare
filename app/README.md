@@ -12,7 +12,7 @@
 ![](img/Login.png)
 ![](img/Main.png)
 ![](img/Nosotros.png)
-![](img/privacidad y seguridad.png)
+![](img/privacidadyseguridad.png)
 ![](img/resetPasword.png)
 ![](img/reserva.png)
 ![](img/reservaDelete.png)
